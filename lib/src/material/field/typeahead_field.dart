@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_typeahead/src/material/field/text_field_configuration.dart';
 import 'package:flutter_typeahead/src/keyboard_suggestion_selection_notifier.dart';
@@ -647,12 +646,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
   }
 
   KeyEventResult _onKeyEvent(FocusNode _, RawKeyEvent event) {
-    if (event.isKeyPressed(LogicalKeyboardKey.arrowUp) ||
-        event.isKeyPressed(LogicalKeyboardKey.arrowDown)) {
-      // do nothing to avoid puzzling users until keyboard arrow nav is implemented
-    } else {
-      _keyboardSuggestionSelectionNotifier.onKeyboardEvent(event);
-    }
+    _keyboardSuggestionSelectionNotifier.onKeyboardEvent(event);
     return KeyEventResult.ignored;
   }
 
